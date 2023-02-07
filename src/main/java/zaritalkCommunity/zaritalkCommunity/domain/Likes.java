@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@NoArgsConstructor
+//@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @SQLDelete(sql = "update like set deleted_at = current_timestamp where id = ?")
 @Where(clause = "deleted_at is null")
@@ -25,11 +25,6 @@ public class Likes extends BaseEntity{
     @JoinColumn(name = "account_id")
     private Account account;
 
-    public Likes(Article article, Account account) {
-        this.article = article;
-        this.account = account;
-    }
-
     //==연관관계 메서드==//
     public void setAccount(Account account) {
         this.account = account;
@@ -39,5 +34,13 @@ public class Likes extends BaseEntity{
     public void setArticle(Article article) {
         this.article = article;
         article.getLikes().add(this);
+    }
+
+    public static Likes createLike(Article article, Account account) {
+        Likes like = new Likes();
+        like.setArticle(article);
+        like.setAccount(account);
+
+        return like;
     }
 }
