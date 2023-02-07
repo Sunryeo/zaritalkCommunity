@@ -1,18 +1,20 @@
 package zaritalkCommunity.zaritalkCommunity.domain;
 
 import lombok.Getter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
-public class Account {
-
-    @Id @GeneratedValue
-    private Long id;
+@EntityListeners(AuditingEntityListener.class)
+@SQLDelete(sql = "update account set deleted_at = current_timestamp where id = ?")
+@Where(clause = "deleted_at is null")
+public class Account extends BaseEntity {
 
     private String password;
 
@@ -24,10 +26,6 @@ public class Account {
     private AccountType account_type;
 
     private boolean quit;
-
-    private LocalDateTime created_at;
-
-    private LocalDateTime deleted_at;
 
     @OneToMany(mappedBy = "account")
     private List<Likes> likes = new ArrayList<>();
