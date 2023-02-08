@@ -17,7 +17,7 @@ public class ArticleRepository {
         em.persist(article);
     }
 
-    public Article findOne(Long id) {
+    public Article findById(Long id) {
         return em.find(Article.class, id);
     }
 

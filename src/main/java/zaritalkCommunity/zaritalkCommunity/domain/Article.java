@@ -21,6 +21,10 @@ public class Article extends BaseEntity{
     private String title;
     private String body;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
+    private Account account;
+
     @OneToMany(mappedBy = "article")
     private List<Likes> likes = new ArrayList<>();
 
@@ -28,4 +32,18 @@ public class Article extends BaseEntity{
         this.title = title;
         this.body = body;
     }
+
+    //==연관관계 메서드==//
+    public void setAccount(Account account) {
+        this.account = account;
+        account.getArticles().add(this);
+    }
+
+    // 생성 메서드
+//    public static Article createArticle(String title, String body, Account account) {
+//        Article article = new Article(title, body);
+//        article.setAccount(account);
+//
+//        return article;
+//    }
 }

@@ -19,6 +19,7 @@ import java.util.List;
 public class Account extends BaseEntity {
     private String nickname;
 
+    //todo: unique 설정
     private String account_id;
 
     @Enumerated(EnumType.STRING)
@@ -28,6 +29,9 @@ public class Account extends BaseEntity {
 
     @OneToMany(mappedBy = "account")
     private List<Likes> likes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "account")
+    private List<Article> articles = new ArrayList<>();
 
     public Account(String nickname, AccountType account_type) {
         this.nickname = nickname;

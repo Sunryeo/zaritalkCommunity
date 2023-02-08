@@ -21,10 +21,11 @@ public class AccountRepository {
         return em.find(Account.class, id);
     }
 
-    public List<Account> findByAccountId(String account_id) {
+
+    public Account findByAccountId(String account_id) {
         return em.createQuery("select ac from Account ac where ac.account_id = :accountId", Account.class)
                 .setParameter("accountId", account_id)
-                .getResultList();
+                .getSingleResult();
     }
 
     public List<Account> findByNickname(String nickname) {

@@ -36,6 +36,7 @@ public class Likes extends BaseEntity{
         article.getLikes().add(this);
     }
 
+    // 생성 메서드
     public static Likes createLike(Article article, Account account) {
         Likes like = new Likes();
         like.setArticle(article);
