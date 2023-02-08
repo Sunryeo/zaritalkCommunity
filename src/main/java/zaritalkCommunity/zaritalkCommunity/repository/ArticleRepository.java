@@ -25,4 +25,9 @@ public class ArticleRepository {
         return em.createQuery("select ar from Article ar", Article.class)
                 .getResultList();
     }
+
+    public void delete(Long id) {
+        Article article = findById(id);
+        em.remove(article);
+    }
 }

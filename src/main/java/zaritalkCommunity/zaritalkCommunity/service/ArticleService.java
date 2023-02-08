@@ -46,6 +46,24 @@ public class ArticleService {
     }
 
     /**
+     * 글 수정
+     */
+    @Transactional
+    public void update(Long id, String body) {
+        Article article = articleRepository.findById(id);
+        article.setBody(body);
+    }
+
+    /**
+     * 글 삭제
+     */
+    @Transactional
+    public void delete(Long id) {
+        articleRepository.delete(id);
+    }
+
+
+    /**
      * title, body 글자수 검증
      */
     private void validateStringLength(String title, String body) {

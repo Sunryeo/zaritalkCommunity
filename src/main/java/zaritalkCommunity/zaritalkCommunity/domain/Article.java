@@ -25,11 +25,15 @@ public class Article extends BaseEntity{
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
     private List<Likes> likes = new ArrayList<>();
 
     public Article(String title, String body) {
         this.title = title;
+        this.body = body;
+    }
+
+    public void setBody(String body) {
         this.body = body;
     }
 

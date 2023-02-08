@@ -27,7 +27,7 @@ public class Account extends BaseEntity {
 
     private boolean quit;
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", cascade = CascadeType.REMOVE)
     private List<Likes> likes = new ArrayList<>();
 
     @OneToMany(mappedBy = "account")
