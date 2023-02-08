@@ -12,6 +12,13 @@ spring:
       hibernate:
         #        show_sql: true
         format_sql: true
+#  security:
+#    user:
+#      name: user
+#      password: 1234
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 logging.level:
   org.hibernate.SQL: debug
