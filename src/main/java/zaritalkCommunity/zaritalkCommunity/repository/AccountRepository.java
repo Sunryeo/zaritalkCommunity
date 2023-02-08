@@ -26,4 +26,10 @@ public class AccountRepository {
                 .setParameter("accountId", account_id)
                 .getResultList();
     }
+
+    public List<Account> findByNickname(String nickname) {
+        return em.createQuery("select ac from Account ac where ac.nickname = :nickname", Account.class)
+                .setParameter("nickname", nickname)
+                .getResultList();
+    }
 }

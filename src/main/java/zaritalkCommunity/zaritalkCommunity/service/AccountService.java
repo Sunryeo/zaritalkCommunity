@@ -18,8 +18,11 @@ public class AccountService {
     /**
      * 회원가입
      */
+    @Transactional
     public Long join(Account account) {
-        validateDuplicateAccount(account.getAccount_id());
+        validateDuplicateAccount(account.getNickname());
+        account.setAccountId(account.getNickname(), account.getAccount_type());
+        account.setQuit(false);
         accountRepository.save(account);
         return account.getId();
     }
@@ -27,18 +30,11 @@ public class AccountService {
     /**
      * 중복회원 검증
      */
-    private void validateDuplicateAccount(String account_id) {
-        List<Account> accounts = accountRepository.findByAccountId(account_id);
+    private void validateDuplicateAccount(String nickname) {
+        List<Account> accounts = accountRepository.findByNickname(nickname);
         if(!accounts.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
 
-    /**
-     * 로그인
-     */
-
-    /**
-     * 로그아웃
-     */
 }

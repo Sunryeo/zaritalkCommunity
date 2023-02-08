@@ -17,9 +17,6 @@ import java.util.List;
 @SQLDelete(sql = "update account set deleted_at = current_timestamp where id = ?")
 @Where(clause = "deleted_at is null")
 public class Account extends BaseEntity {
-
-    private String password;
-
     private String nickname;
 
     private String account_id;
@@ -32,13 +29,22 @@ public class Account extends BaseEntity {
     @OneToMany(mappedBy = "account")
     private List<Likes> likes = new ArrayList<>();
 
-    public Account(String account_id, String password, String nickname) {
-        this.account_id = account_id;
-        this.password = password;
+    public Account(String nickname, AccountType account_type) {
         this.nickname = nickname;
+        this.account_type = account_type;
     }
 
     public void setAccountType(AccountType accountType) {
         this.account_type = accountType;
     }
+
+    public void setAccountId(String nickname, AccountType accountType) {
+        String accountId = accountType + " " + nickname;
+        this.account_id = accountId;
+    }
+
+    public void setQuit(boolean quit) {
+        this.quit = quit;
+    }
+
 }
