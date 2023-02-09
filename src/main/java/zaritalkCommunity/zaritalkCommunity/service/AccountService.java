@@ -37,4 +37,11 @@ public class AccountService {
         }
     }
 
+    /**
+     * 회원 단일 조회
+     */
+    public Account finOne(Long id) {
+        return accountRepository.findById(id);
+    }
+
 }

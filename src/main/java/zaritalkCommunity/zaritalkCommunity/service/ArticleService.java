@@ -22,18 +22,10 @@ public class ArticleService {
      * 글 작성
      */
     @Transactional
-    public Long createArticle(String account_id, Article article) {
-//        try{
-            Account account = accountRepository.findByAccountId(account_id);
-//            if(Objects.isNull(account)) {
-//                throw new IllegalStateException("자리톡 회원만 글을 작성할 수 있습니다.");
-//            }
+    public Long createArticle(Account account, Article article) {
 //            validateStringLength(article.getTitle(), article.getBody());
             article.setAccount(account);
             articleRepository.save(article);
-//        } catch(Exception e) {
-//            System.out.println("Exception: " + e);
-//        }
 
         return article.getId();
     }

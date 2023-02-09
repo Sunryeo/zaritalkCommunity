@@ -31,4 +31,15 @@ public class LikeRepository {
                 .getResultList();
     }
 
+    public Likes findById(Long id) {
+        Likes result  = (Likes) em.createQuery("select l from Likes l" +
+                " join fetch l.account ac" +
+                " join fetch l.article ar" +
+                " where l.id = :id")
+                .setParameter("id", id)
+                .getSingleResult();
+
+        return result;
+    }
+
 }

@@ -17,7 +17,7 @@ public class AccountRepository {
         em.persist(account);
     }
 
-    public Account findOne(Long id) {
+    public Account findById(Long id) {
         return em.find(Account.class, id);
     }
 
