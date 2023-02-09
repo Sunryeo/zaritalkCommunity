@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import zaritalkCommunity.zaritalkCommunity.domain.AccountType;
-import zaritalkCommunity.zaritalkCommunity.domain.Article;
 
 @Data
 @AllArgsConstructor

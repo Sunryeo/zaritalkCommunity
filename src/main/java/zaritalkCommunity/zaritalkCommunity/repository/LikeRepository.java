@@ -32,14 +32,30 @@ public class LikeRepository {
     }
 
     public Likes findById(Long id) {
-        Likes result  = (Likes) em.createQuery("select l from Likes l" +
-                " join fetch l.account ac" +
-                " join fetch l.article ar" +
-                " where l.id = :id")
+        List<Likes> likeList = em.createQuery("select l from Likes l" +
+                        " join fetch l.account ac" +
+                        " join fetch l.article ar" +
+                        " where l.id = :id", Likes.class)
                 .setParameter("id", id)
-                .getSingleResult();
+                .getResultList();
 
-        return result;
+        if(likeList.isEmpty()) {
+            return null;
+        } else {
+            return likeList.get(0);
+        }
     }
 
+    public Likes findByAccountIdAndArticleId(Long accountId, Long articleId) {
+        List<Likes> likeList = em.createQuery("select l from Likes l where l.account.id = :accountId" +
+                        " and l.article.id = :articleId", Likes.class)
+                .setParameter("accountId", accountId)
+                .setParameter("articleId", articleId)
+                .getResultList();
+        if(likeList.isEmpty()) {
+            return null;
+        } else {
+            return likeList.get(0);
+        }
+    }
 }

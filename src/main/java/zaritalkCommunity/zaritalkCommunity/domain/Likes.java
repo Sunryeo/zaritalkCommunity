@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Getter
 //@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@SQLDelete(sql = "update like set deleted_at = current_timestamp where id = ?")
+@SQLDelete(sql = "update likes set deleted_at = current_timestamp where id = ?")
 @Where(clause = "deleted_at is null")
 public class Likes extends BaseEntity{
 
