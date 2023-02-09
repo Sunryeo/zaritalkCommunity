@@ -4,6 +4,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,9 +26,15 @@ public class AccountApiController {
     @Operation(summary="회원가입", description="회원가입 api 입니다.")
     @ApiResponse(code = 200, message="ok")
     @PostMapping("/join")
-    public JoinResponseDto join(@RequestBody @Valid JoinRequestDto dto) {
+    public ResponseEntity<JoinResponseDto> join(@RequestBody @Valid JoinRequestDto dto) {
         Account account = new Account(dto.getNickname(), dto.getAccount_type());
         Long resultId = accountService.join(account);
-        return new JoinResponseDto(resultId);
+        Account result = accountService.finOne(resultId);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Authentication", result.getAccount_id());
+        JoinResponseDto responseBody = new JoinResponseDto(resultId);
+        return ResponseEntity.ok()
+                .headers(responseHeaders)
+                .body(responseBody);
     }
 }
