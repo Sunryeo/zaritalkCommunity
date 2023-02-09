@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import zaritalkCommunity.zaritalkCommunity.domain.Account;
 import zaritalkCommunity.zaritalkCommunity.domain.Article;
+import zaritalkCommunity.zaritalkCommunity.dto.ArticleQueryDto;
+import zaritalkCommunity.zaritalkCommunity.dto.response.ListResponseDto;
 import zaritalkCommunity.zaritalkCommunity.dto.request.CreatePostRequestDto;
 import zaritalkCommunity.zaritalkCommunity.dto.request.UpdatePostRequestDto;
 import zaritalkCommunity.zaritalkCommunity.dto.response.CreatePostResponseDto;
@@ -13,6 +15,7 @@ import zaritalkCommunity.zaritalkCommunity.service.ArticleService;
 import zaritalkCommunity.zaritalkCommunity.service.AuthService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Api(tags = "article")
 @RestController
@@ -21,6 +24,7 @@ public class ArticleApiController {
 
     private final ArticleService articleService;
     private final AuthService authService;
+
 
     @PostMapping("/post")
     public CreatePostResponseDto createPost(@RequestBody @Valid CreatePostRequestDto dto,
@@ -55,5 +59,13 @@ public class ArticleApiController {
         // user validation
         authService.authAccount(authentication);
         articleService.delete(id);
+    }
+
+    @GetMapping("/post")
+    public ListResponseDto<ArticleQueryDto> findAll() {
+        List<ArticleQueryDto> resultList = articleService.findAll();
+        int count = resultList.size();
+
+        return new ListResponseDto(resultList, count);
     }
 }

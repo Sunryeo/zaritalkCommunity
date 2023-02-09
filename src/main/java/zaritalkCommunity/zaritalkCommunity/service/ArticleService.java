@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import zaritalkCommunity.zaritalkCommunity.domain.Account;
 import zaritalkCommunity.zaritalkCommunity.domain.Article;
+import zaritalkCommunity.zaritalkCommunity.dto.ArticleQueryDto;
 import zaritalkCommunity.zaritalkCommunity.repository.AccountRepository;
 import zaritalkCommunity.zaritalkCommunity.repository.ArticleRepository;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -35,6 +37,13 @@ public class ArticleService {
      */
     public Article findOne(Long id) {
         return articleRepository.findById(id);
+    }
+
+    /**
+     * 글 목록 조회
+     */
+    public List<ArticleQueryDto> findAll() {
+        return articleRepository.findAll();
     }
 
     /**

@@ -19,7 +19,7 @@ import java.util.List;
 public class Account extends BaseEntity {
     private String nickname;
 
-    //todo: unique 설정
+    @Column(unique = true)
     private String account_id;
 
     @Enumerated(EnumType.STRING)
@@ -42,8 +42,8 @@ public class Account extends BaseEntity {
         this.account_type = accountType;
     }
 
-    public void setAccountId(String nickname, AccountType accountType) {
-        String accountId = accountType + " " + nickname;
+    public void setAccountId(Long id, AccountType accountType) {
+        String accountId = accountType + " " + id.toString();
         this.account_id = accountId;
     }
 

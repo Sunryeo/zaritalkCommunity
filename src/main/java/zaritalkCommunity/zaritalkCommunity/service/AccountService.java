@@ -21,9 +21,9 @@ public class AccountService {
     @Transactional
     public Long join(Account account) {
         validateDuplicateAccount(account.getNickname());
-        account.setAccountId(account.getNickname(), account.getAccount_type());
         account.setQuit(false);
         accountRepository.save(account);
+        account.setAccountId(account.getId(), account.getAccount_type());
         return account.getId();
     }
 
