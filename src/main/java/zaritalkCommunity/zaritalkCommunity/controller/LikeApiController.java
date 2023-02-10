@@ -1,6 +1,7 @@
 package zaritalkCommunity.zaritalkCommunity.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ public class LikeApiController {
     private final ArticleService articleService;
     private final AuthService authService;
 
+    @Operation(summary="게시글 좋아요", description="게시글 좋아요 생성 api입니다.")
     @PostMapping("/like/{articleId}")
     public CreateLikeResponseDto createLike(@RequestHeader(value = "Authentication")String authentication,
                                             @PathVariable("articleId") Long articleId) {

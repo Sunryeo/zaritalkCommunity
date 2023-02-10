@@ -18,8 +18,8 @@ public class CreatePostResponseDto {
     private String body;
     @ApiModelProperty(example = "sunryeo")
     private String nickname;
-    @ApiModelProperty(example = "2023-02-08")
+    @ApiModelProperty(example = "2023-02-09T15:37:09.756+00:00")
     private LocalDateTime created_at;
-    @ApiModelProperty(example = "2023-02-08")
+    @ApiModelProperty(example = "2023-02-09T15:37:09.756+00:00")
     private LocalDateTime updated_at;
 }

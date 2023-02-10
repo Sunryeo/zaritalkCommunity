@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import zaritalkCommunity.zaritalkCommunity.domain.Account;
 import zaritalkCommunity.zaritalkCommunity.domain.Article;
-import zaritalkCommunity.zaritalkCommunity.dto.ArticleListWithAuthResponseDto;
+import zaritalkCommunity.zaritalkCommunity.dto.response.ArticleListWithAuthResponseDto;
 import zaritalkCommunity.zaritalkCommunity.repository.AccountRepository;
 import zaritalkCommunity.zaritalkCommunity.repository.ArticleRepository;
 

@@ -11,6 +11,6 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 public class JoinResponseDto {
 
-    @ApiModelProperty(example = "1")
+    @ApiModelProperty(name = "id", example = "1")
     private Long id;
 }
