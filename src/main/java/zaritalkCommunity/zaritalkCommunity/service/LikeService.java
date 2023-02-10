@@ -6,8 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import zaritalkCommunity.zaritalkCommunity.domain.Account;
 import zaritalkCommunity.zaritalkCommunity.domain.Article;
 import zaritalkCommunity.zaritalkCommunity.domain.Likes;
-import zaritalkCommunity.zaritalkCommunity.repository.AccountRepository;
-import zaritalkCommunity.zaritalkCommunity.repository.ArticleRepository;
 import zaritalkCommunity.zaritalkCommunity.repository.LikeRepository;
 
 import java.util.Objects;
@@ -18,8 +16,6 @@ import java.util.Objects;
 public class LikeService {
 
     private final LikeRepository likeRepository;
-    private final AccountRepository accountRepository;
-    private final ArticleRepository articleRepository;
 
 
     /**
