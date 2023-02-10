@@ -47,7 +47,8 @@ public class ArticleApiController {
                                             @RequestBody @Valid UpdatePostRequestDto dto,
                                             @RequestHeader(value = "Authentication")String authentication) {
         // user validation
-        authService.authAccount(authentication);
+        Account account = authService.authAccount(authentication);
+        authService.authWriter(account.getId(), id);
         articleService.update(id, dto.getBody());
         Article article = articleService.findOne(id);
 
@@ -58,7 +59,8 @@ public class ArticleApiController {
     public void deletePost(@PathVariable("id") Long id,
                            @RequestHeader(value = "Authentication")String authentication) {
         // user validation
-        authService.authAccount(authentication);
+        Account account = authService.authAccount(authentication);
+        authService.authWriter(account.getId(), id);
         articleService.delete(id);
     }
 
