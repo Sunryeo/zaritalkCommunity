@@ -1,26 +1,26 @@
 package zaritalkCommunity.zaritalkCommunity.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 import zaritalkCommunity.zaritalkCommunity.domain.AccountType;
 
 @Data
-@Getter
-@AllArgsConstructor
+@Getter @Setter
+@RequiredArgsConstructor
 public class ArticleQueryDto {
 
     @ApiModelProperty(name = "id", example = "1")
-    private Long id;
-    @ApiModelProperty(name = "like_count", example = "10")
-    private Long like_count;
+    private final Long id;
+    @ApiModelProperty(name = "like_cnt", example = "10")
+    private final int like_cnt;
     @ApiModelProperty(name = "title", example = "제목입니다.")
-    private String title;
+    private final String title;
     @ApiModelProperty(name = "body", example = "내용입니다.")
-    private String body;
+    private final String body;
     @ApiModelProperty(name = "nickname", example = "sunryeo")
-    private String nickname;
+    private final String nickname;
     @ApiModelProperty(name = "account_type", required = true, allowableValues = "LESSOR, REALTOR, LESSEE")
-    private AccountType account_type;
+    private final AccountType account_type;
+
+    private String is_liked;
 }

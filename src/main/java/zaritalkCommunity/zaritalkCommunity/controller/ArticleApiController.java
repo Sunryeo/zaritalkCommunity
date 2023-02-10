@@ -16,6 +16,7 @@ import zaritalkCommunity.zaritalkCommunity.service.AuthService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Api(tags = "article")
 @RestController
@@ -62,8 +63,10 @@ public class ArticleApiController {
     }
 
     @GetMapping("/post")
-    public ListResponseDto<ArticleQueryDto> findAll() {
-        List<ArticleQueryDto> resultList = articleService.findAll();
+    public ListResponseDto<Article> findAll(
+            @RequestHeader(value = "Authentication", required = false) Optional<Long> authentication
+    ) {
+        List<Article> resultList = articleService.findAll(authentication);
         int count = resultList.size();
 
         return new ListResponseDto(resultList, count);

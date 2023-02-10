@@ -11,6 +11,8 @@ import zaritalkCommunity.zaritalkCommunity.repository.ArticleRepository;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -42,8 +44,17 @@ public class ArticleService {
     /**
      * 글 목록 조회
      */
-    public List<ArticleQueryDto> findAll() {
-        return articleRepository.findAll();
+    public List<Article> findAll(Optional<Long> account_id) {
+        List<Article> articleList = null;
+        if(account_id.isPresent()) {
+//            for(int i = 0; i < articleList.size(); i++) {
+//
+//            }
+//            Account account = accountRepository.findByAccountId(account_id.get());
+            articleList = articleRepository.findAllWithAccountId(account_id.get());
+        }
+
+        return articleList;
     }
 
     /**
