@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import zaritalkCommunity.zaritalkCommunity.domain.Account;
 import zaritalkCommunity.zaritalkCommunity.domain.Article;
-import zaritalkCommunity.zaritalkCommunity.dto.ArticleQueryDto;
+import zaritalkCommunity.zaritalkCommunity.dto.ArticleListWithAuthResponseDto;
 import zaritalkCommunity.zaritalkCommunity.dto.response.ListResponseDto;
 import zaritalkCommunity.zaritalkCommunity.dto.request.CreatePostRequestDto;
 import zaritalkCommunity.zaritalkCommunity.dto.request.UpdatePostRequestDto;
@@ -63,10 +63,10 @@ public class ArticleApiController {
     }
 
     @GetMapping("/post")
-    public ListResponseDto<Article> findAll(
-            @RequestHeader(value = "Authentication", required = false) Optional<Long> authentication
+    public ListResponseDto<Object> findAll(
+            @RequestHeader(value = "Authentication", required = false) Optional<String> authentication
     ) {
-        List<Article> resultList = articleService.findAll(authentication);
+        List<ArticleListWithAuthResponseDto> resultList = articleService.findAll(authentication);
         int count = resultList.size();
 
         return new ListResponseDto(resultList, count);
