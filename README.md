@@ -11,7 +11,8 @@
 - 글 좋아요(`POST /like/:articleId`)
 
 ### DB ERD
-![스크린샷 2023-02-11 오후 2.04.07.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F56%2Fhwc7znhn0hz8psyhm3wdb6d00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_yZVKzo%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-11%20%EC%98%A4%ED%9B%84%202.04.07.png)
+<img width="824" src="https://velog.velcdn.com/images/elma98/post/cc687289-6656-46f2-b043-1185b9296341/image.png">
+
 
 ### 실행 방법
 *데이터베이스는 H2 db를 사용하여 간단하게 구현하였습니다. `zaritalkCommunity`이름의 db를 최초에 생성해주시면 
@@ -35,32 +36,36 @@
 
 [계정(Account)]
 
-![스크린샷 2023-02-11 오후 1.26.17.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F56%2Fhwc7znhn0hz8psyhm3wdb6d00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_HecwnP%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-11%20%EC%98%A4%ED%9B%84%201.26.17.png)
+<img width="824" src="https://velog.velcdn.com/images/elma98/post/2d680d8e-9a5c-4d66-99aa-68a537b859f0/image.png">
+
 
 [게시글(Article)]
 
-![스크린샷 2023-02-11 오후 1.27.41.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F56%2Fhwc7znhn0hz8psyhm3wdb6d00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_3A6SFt%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-11%20%EC%98%A4%ED%9B%84%201.27.41.png)
+<img width="824" src="https://velog.velcdn.com/images/elma98/post/181b7c05-5d53-43b6-b0a6-1a0a470570f1/image.png">
+
 
 [좋아요(Likes)]
 
 ⚠️`Likes` 테이블은 구현 코드 내부에서는 `Like`로 통용되고 있지만 sql 예약어 충돌로 테이블 생성이 되지 않는 관계로 부득이하게 테이블명을 `Likes`로 명명하게 되었습니다.
 
-![스크린샷 2023-02-11 오후 1.31.51.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F56%2Fhwc7znhn0hz8psyhm3wdb6d00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_mXchU0%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-11%20%EC%98%A4%ED%9B%84%201.31.51.png)
+<img width="824" src="https://velog.velcdn.com/images/elma98/post/4fb195e5-fefa-4f69-8a8e-e9ff1fa30fda/image.png">
+
 
 <Api 테스트 방법>
 
 http://localhost:8080/swagger-ui/#/ 스웨거 ui 접속
 
+<img width="824" src="https://velog.velcdn.com/images/elma98/post/4663ce24-82ac-4ac7-9328-da0c39117a3b/image.png">
 
-![스크린샷 2023-02-11 오후 1.34.21.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F56%2Fhwc7znhn0hz8psyhm3wdb6d00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_pAKlD9%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-11%20%EC%98%A4%ED%9B%84%201.34.21.png)
 위 스크린샷의 `/join` api의 `Execute` 버튼을 누르면
 
-![스크린샷 2023-02-11 오후 1.37.18.png](..%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-11%20%EC%98%A4%ED%9B%84%201.37.18.png)
+<img width="824" src="https://velog.velcdn.com/images/elma98/post/7bbad86f-2988-46da-afb9-d7e245006e51/image.png">
 
 `Response Header`의 `Authentication`의 값으로 회원의 `account_id`를 돌려줍니다. 앞으로 `Request Header`의
 `Authentication`값이 필요한 모든 api를 호출할 때마다 해당 `account_id`를 사용하게 됩니다.
 
-![스크린샷 2023-02-11 오후 1.43.46.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F56%2Fhwc7znhn0hz8psyhm3wdb6d00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_Bgj32s%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-11%20%EC%98%A4%ED%9B%84%201.43.46.png)
+<img width="824" src="https://velog.velcdn.com/images/elma98/post/7b013c6a-c997-466e-9ac4-cfe7b5dac3db/image.png">
+
 `Authentication` 값이 request시 필요한 api는 위와 같이 `api parameter`에 표시됩니다.
 
 
