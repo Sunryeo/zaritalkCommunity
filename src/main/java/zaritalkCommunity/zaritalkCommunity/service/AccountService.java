@@ -3,6 +3,8 @@ package zaritalkCommunity.zaritalkCommunity.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import static zaritalkCommunity.zaritalkCommunity.Exception.CustomErrorCode.*;
+import zaritalkCommunity.zaritalkCommunity.Exception.CustomException;
 import zaritalkCommunity.zaritalkCommunity.domain.Account;
 import zaritalkCommunity.zaritalkCommunity.repository.AccountRepository;
 
@@ -33,7 +35,7 @@ public class AccountService {
     private void validateDuplicateAccount(String nickname) {
         List<Account> accounts = accountRepository.findByNickname(nickname);
         if(!accounts.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
+            throw new CustomException(DUPLICATE_ACCOUNT_ERROR);
         }
     }
 

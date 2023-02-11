@@ -3,11 +3,13 @@ package zaritalkCommunity.zaritalkCommunity.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import zaritalkCommunity.zaritalkCommunity.Exception.CustomException;
 import zaritalkCommunity.zaritalkCommunity.domain.Account;
 import zaritalkCommunity.zaritalkCommunity.domain.Article;
 import zaritalkCommunity.zaritalkCommunity.dto.response.ArticleListWithAuthResponseDto;
 import zaritalkCommunity.zaritalkCommunity.repository.AccountRepository;
 import zaritalkCommunity.zaritalkCommunity.repository.ArticleRepository;
+import static zaritalkCommunity.zaritalkCommunity.Exception.CustomErrorCode.*;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
@@ -28,7 +30,7 @@ public class ArticleService {
      */
     @Transactional
     public Long createArticle(Account account, Article article) {
-//            validateStringLength(article.getTitle(), article.getBody());
+            validateStringLength(article.getTitle(), article.getBody());
             article.setAccount(account);
             articleRepository.save(article);
 
@@ -81,10 +83,10 @@ public class ArticleService {
      */
     private void validateStringLength(String title, String body) {
         if(title.length() > 50) {
-            throw new IllegalStateException("제목은 50자 미만이어야 합니다.");
+            throw new CustomException(TITLE_LENGTH_OVER_ERROR);
         }
         if(body.length() > 100) {
-            throw new IllegalStateException("내용은 100자 미만이어야 합니다.");
+            throw new CustomException(BODY_LENGTH_OVER_ERROR);
         }
     }
 
