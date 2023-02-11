@@ -19,8 +19,11 @@ public class AuthService {
 
     public Account authAccount(String authentication) {
         Account account;
-        try{
+        try {
             account = accountRepository.findByAccountId(authentication);
+            if(account.getQuit() == true) {
+                throw new CustomException(INVALID_ACCOUNT_ERROR);
+            }
         } catch(RuntimeException e) {
             throw new CustomException(INVALID_ACCOUNT_ERROR);
         }

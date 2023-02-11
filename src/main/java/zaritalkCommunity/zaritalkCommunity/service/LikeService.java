@@ -3,6 +3,8 @@ package zaritalkCommunity.zaritalkCommunity.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import static zaritalkCommunity.zaritalkCommunity.Exception.CustomErrorCode.*;
+import zaritalkCommunity.zaritalkCommunity.Exception.CustomException;
 import zaritalkCommunity.zaritalkCommunity.domain.Account;
 import zaritalkCommunity.zaritalkCommunity.domain.Article;
 import zaritalkCommunity.zaritalkCommunity.domain.Likes;
@@ -52,7 +54,7 @@ public class LikeService {
         Likes existLike = findByAccountIdAndArticleId(accountId, articleId);
 
         if(!Objects.isNull(existLike)) {
-            throw new IllegalStateException("이미 좋아요한 게시물입니다.");
+            throw new CustomException(ALREADY_LIKED_ERROR);
         }
     }
 }

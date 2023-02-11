@@ -1,5 +1,6 @@
 package zaritalkCommunity.zaritalkCommunity.domain;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
@@ -25,7 +26,7 @@ public class Account extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private AccountType account_type;
 
-    private boolean quit;
+    private Boolean quit;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.REMOVE)
     private List<Likes> likes = new ArrayList<>();
