@@ -37,7 +37,6 @@ public class ArticleRepository {
 
         return em.createNativeQuery(query).setParameter(1, accountId)
                 .getResultList();
-//        return em.createNamedQuery("Article.articleList").setParameter(1, accountId).getResultList();
     }
 
     public List<ArticleQueryDto> findAllWithoutAccountId() {

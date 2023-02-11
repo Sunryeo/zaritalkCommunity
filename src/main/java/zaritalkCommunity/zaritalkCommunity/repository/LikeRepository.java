@@ -17,14 +17,12 @@ public class LikeRepository {
         em.persist(like);
     }
 
-    // todo: join 확인 필요
     public List<Likes> findByArticleId(Long articleId) {
         return em.createQuery("select l from Likes l where l.article.id = :articleId", Likes.class)
                 .setParameter("articleId", articleId)
                 .getResultList();
     }
 
-    // todo: join 확인 필요
     public List<Likes> findByAccountId(Long accountId) {
         return em.createQuery("select l from Likes l where l.account.id = :accountId", Likes.class)
                 .setParameter("accountId", accountId)
