@@ -11,7 +11,7 @@
 - 글 좋아요(`POST /like/:articleId`)
 
 ### DB ERD
-<iframe width="560" height="315" src='https://dbdiagram.io/embed/63e1cf9c296d97641d7eebc6'> </iframe>
+![스크린샷 2023-02-11 오후 2.04.07.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F56%2Fhwc7znhn0hz8psyhm3wdb6d00000gp%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_yZVKzo%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-02-11%20%EC%98%A4%ED%9B%84%202.04.07.png)
 
 ### 실행 방법
 *데이터베이스는 H2 db를 사용하여 간단하게 구현하였습니다. `zaritalkCommunity`이름의 db를 최초에 생성해주시면 
